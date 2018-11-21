@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <Windows.h>
+#include <conio.h>
 
 Scene::Scene()
 {
@@ -11,7 +12,7 @@ Scene::Scene()
 		for (int j = 0; j < 10; ++j)
 		{
 
-			scene_blackboard[i][j] = ' ';
+			scene_blackboard[i][j] = 'e';
 
 		}
 	}
@@ -20,14 +21,18 @@ Scene::Scene()
 void Scene::DrawBlackboard()
 {
 	system("cls");
-	for (int i = 0; i < 50; ++i)
+	for (int i = 0; i < 10; ++i)
 	{
-		for (int j = 0; j < 10; ++j)
+		for (int j = 0; j < 50; ++j)
 		{
+			//printf("ñ");
+			//std::wcout << scene_blackboard[j][i];
 
-			wprintf(L"%lc",scene_blackboard[i][j]);
+			std::cout << (unsigned char) 219	;
+
+			//wprintf (L"%c",scene_blackboard[j][i]);
 
 		}
-		printf_s("\n");
+		std::wcout << std::endl;
 	}
 }
