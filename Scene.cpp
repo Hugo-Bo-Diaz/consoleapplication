@@ -28,7 +28,7 @@ void Scene::DrawBlackboard()
 			//printf("ñ");
 			//std::wcout << scene_blackboard[j][i];
 
-			std::cout << (unsigned char) 219	;
+			std::cout << (unsigned char)scene_blackboard[j][i];
 
 			//wprintf (L"%c",scene_blackboard[j][i]);
 

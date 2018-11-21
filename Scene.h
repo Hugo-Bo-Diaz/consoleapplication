@@ -8,7 +8,7 @@ class Scene
 {
 public:
 
-	wchar_t scene_blackboard[50][10];
+	unsigned char scene_blackboard[50][10];
 	bool scene_blackboard_required_change[50][10];
 
 	Scene();
