@@ -1,7 +1,42 @@
 #pragma once
+#include <string>
+#include<windows.h>
+
+enum color
+{
+HARD_BLUE=0,
+HARD_GREEN,
+TURQUOISE,
+GARNET,
+HARD_PURPLE,
+GOLD,
+SILVER,
+WHITEISH,
+GREY,
+BLUE,
+GREEN,
+LIGHT_BLUE,
+RED,
+PURPLE,
+YELLOW,
+WHITE,
+OTHER
+};
+
 class Input
 {
-public:
-	int keyboard;
+private:
 
+	int keyboard[255];
+	std::string typing;
+	HANDLE hConsole;
+
+public:
+	Input();
+
+	void UpdateKeyboard();
+
+	int GetKeyState(int keycode);
+
+	void SetColor(color c, int other_color = 0);
 };
