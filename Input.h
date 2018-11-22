@@ -29,9 +29,11 @@ private:
 
 	int keyboard[255];
 	std::string typing;
-	HANDLE hConsole;
 
 public:
+
+	HANDLE hConsole;
+
 	Input();
 
 	void UpdateKeyboard();
