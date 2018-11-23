@@ -21,6 +21,8 @@ public:
 
 	ConsoleApplication();
 
+	void Start();
+
 	void Update();
 };
 extern ConsoleApplication* App;

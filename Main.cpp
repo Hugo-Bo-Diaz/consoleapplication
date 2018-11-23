@@ -9,8 +9,8 @@ int main()
 	App->appstate = STARTING;
 
 	App->appstate = RUNNING;
-	App->scene.scene_blackboard[10][10] = 219;
 
+	App->Start();
 	while (App->appstate == RUNNING)
 	{
 		App->Update();

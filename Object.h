@@ -4,10 +4,13 @@
 class Object
 {
 public:
-	int x;
-	int y;
+	int x=5;
+	int y=5;
 
-	void Draw();
+	virtual void Draw();
+
+	virtual void Update() {};
+
 };
 
 #endif
