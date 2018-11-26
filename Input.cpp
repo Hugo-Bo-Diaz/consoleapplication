@@ -14,7 +14,7 @@ void Input::UpdateKeyboard()
 	{
 		keyboard[i] = 0;
 	}
-	if (_kbhit())
+	if (!istyping &&_kbhit())
 	{
 		keyboard[_getch()] = 1;
 	}

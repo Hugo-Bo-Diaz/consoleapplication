@@ -1,8 +1,8 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#define SCENE_WIDTH 80;
-#define SCENE_HEIGHT 80;
+#define SCENE_WIDTH 100
+#define SCENE_HEIGHT 20
 #include "Input.h"
 #include <vector>
 #include "Object.h"
@@ -58,10 +58,10 @@ class Scene
 public:
 
 	Cursor BackgroundCursor;
-	pixel scene_blackboard[50][10];
-	pixel scene_blackboard_new[50][10];
+	pixel scene_blackboard[SCENE_WIDTH][SCENE_HEIGHT];
+	pixel scene_blackboard_new[SCENE_WIDTH][SCENE_HEIGHT];
 
-	pixel scene_background[50][10];
+	pixel scene_background[SCENE_WIDTH][SCENE_HEIGHT];
 
 	void PrintPixel(int x, int y, const pixel& p );
 

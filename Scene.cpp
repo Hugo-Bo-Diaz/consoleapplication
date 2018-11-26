@@ -11,9 +11,9 @@
 
 Scene::Scene()
 {
-	for (int i = 0; i < 50 ; ++i)
+	for (int i = 0; i < SCENE_WIDTH; ++i)
 	{
-		for (int j = 0; j < 10; ++j)
+		for (int j = 0; j < SCENE_HEIGHT; ++j)
 		{
 
 			scene_blackboard[i][j].character = 'e';
@@ -36,9 +36,9 @@ void Scene::PrintPixel(int x, int y, const pixel & p)
 
 void Scene::GenerateBackground()
 {
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < SCENE_HEIGHT; ++i)
 	{
-		for (int j = 0; j < 50; ++j)
+		for (int j = 0; j < SCENE_WIDTH; ++j)
 		{
 
 			BackgroundCursor.SetPosition(j, i);
@@ -80,9 +80,9 @@ void Scene::Update()
 void Scene::DrawBlackboard()
 {
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < SCENE_HEIGHT; ++i)
 	{
-		for (int j = 0; j < 50; ++j)
+		for (int j = 0; j < SCENE_WIDTH; ++j)
 		{
 			scene_blackboard_new[j][i] = scene_background[j][i];
 		}
@@ -93,9 +93,9 @@ void Scene::DrawBlackboard()
 		(*it)->Draw();
 	}
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < SCENE_HEIGHT; ++i)
 	{
-		for (int j = 0; j < 50; ++j)
+		for (int j = 0; j < SCENE_WIDTH; ++j)
 		{
 
 			if (!(scene_blackboard_new[j][i] == scene_blackboard[j][i]))
@@ -124,6 +124,6 @@ void Cursor::ResetPosition()
 {
 	COORD normal;
 	normal.X = 0;
-	normal.Y = 11;
+	normal.Y = SCENE_HEIGHT;
 	SetConsoleCursorPosition(App->input.hConsole, normal);
 }

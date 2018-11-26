@@ -40,5 +40,7 @@ public:
 
 	int GetKeyState(int keycode);
 
+	bool istyping = true;
+
 	void SetColor(color c, int other_color = 0);
 };
