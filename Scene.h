@@ -32,13 +32,12 @@ struct pixel
 {
 	unsigned char character = 'e';
 	color col = WHITE;
-	void PrintSelf();
 	void Set(unsigned char _character, color _col)
 	{
 		character = _character;
 		col = _col;
 	}
-	bool operator= (pixel p)
+	bool operator== (pixel p)
 	{
 		bool ret = true;
 		if (this->character != p.character)

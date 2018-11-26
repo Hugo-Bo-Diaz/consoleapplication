@@ -23,7 +23,8 @@ void Object::Draw()
 	{
 		x++;
 	}
-	App->scene.scene_blackboard_new[x][y] = 219;
+	App->scene.scene_blackboard_new[x][y].character = 219;
+	App->scene.scene_blackboard_new[x][y].col = RED;
 
 
 }

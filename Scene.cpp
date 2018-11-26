@@ -16,9 +16,9 @@ Scene::Scene()
 		for (int j = 0; j < 10; ++j)
 		{
 
-			scene_blackboard[i][j] = 'e';
-			scene_blackboard_new[i][j] = 'e';
-			scene_background[i][j] = 'e';
+			scene_blackboard[i][j].character = 'e';
+			scene_blackboard_new[i][j].character = 'e';
+			scene_background[i][j].character = 'e';
 
 		}
 	}
@@ -28,6 +28,10 @@ Scene::Scene()
 
 void Scene::PrintPixel(int x, int y, const pixel & p)
 {
+	BackgroundCursor.SetPosition(x, y);
+	App->input.SetColor(p.col);
+	std::cout << (unsigned char)p.character;
+
 }
 
 void Scene::GenerateBackground()
@@ -38,7 +42,7 @@ void Scene::GenerateBackground()
 		{
 
 			BackgroundCursor.SetPosition(j, i);
-			std::cout << (unsigned char)scene_background[j][i];
+			std::cout << (unsigned char)scene_background[j][i].character;
 
 		}
 	}
@@ -59,7 +63,7 @@ void Scene::Update()
 
 	if (App->input.GetKeyState('g') == 1)
 	{
-		App->scene.scene_blackboard_new[9][10] = 219;
+		App->scene.scene_blackboard_new[9][10].character = 219;
 	}
 
 	if (App->input.GetKeyState(27) == 1)
@@ -94,11 +98,10 @@ void Scene::DrawBlackboard()
 		for (int j = 0; j < 50; ++j)
 		{
 
-			if (scene_blackboard_new[j][i] != scene_blackboard[j][i])
+			if (!(scene_blackboard_new[j][i] == scene_blackboard[j][i]))
 			{
-				BackgroundCursor.SetPosition(j,i);
 				scene_blackboard[j][i] = scene_blackboard_new[j][i];
-				std::cout << (unsigned char)scene_blackboard[j][i];
+				PrintPixel(j,i,scene_blackboard[j][i]);
 			}
 		}
 	}
@@ -123,10 +126,4 @@ void Cursor::ResetPosition()
 	normal.X = 0;
 	normal.Y = 11;
 	SetConsoleCursorPosition(App->input.hConsole, normal);
-}
-
-void pixel::PrintSelf()
-{
-	App->scene.BackgroundCursor.SetColor(col);
-	std::cout << (unsigned char)character;
 }
