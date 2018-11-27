@@ -36,6 +36,10 @@ void Input::UpdateKeyboard()
 			{
 				keyboard[c] = 1;
 			}
+			else if (c == 8 && !typing.empty())
+			{
+				typing.pop_back();
+			}
 			else
 			{
 				typing += c;
@@ -44,8 +48,13 @@ void Input::UpdateKeyboard()
 		}
 	}
 
+	printf_s(" ");
 	if (typing.length() > 0)
 	{
+		for (int i = 0; i < typing.length(); ++i)
+		{
+			printf_s(" ");
+		}
 		SetColor(WHITEISH);
 		App->scene.BackgroundCursor.SetPosition(0, SCENE_HEIGHT + 1);
 		printf_s("%s", typing.c_str());

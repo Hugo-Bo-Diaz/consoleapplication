@@ -7,7 +7,7 @@ public:
 	int x=5;
 	int y=5;
 
-	virtual void Draw() {};
+	virtual void Draw() ;
 
 	virtual void Update() {};
 
