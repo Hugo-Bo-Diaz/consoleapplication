@@ -4,8 +4,6 @@
 class Object_Controller
 {
 public:
-	int x = 5;
-	int y = 5;
 
 	virtual void Draw() {};
 

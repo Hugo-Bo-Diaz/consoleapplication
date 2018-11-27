@@ -42,6 +42,9 @@
     <ClInclude Include="Modules\Input.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Trapped.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -61,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="Modules\Input.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Trapped.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

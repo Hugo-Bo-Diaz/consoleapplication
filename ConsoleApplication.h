@@ -3,6 +3,7 @@
 
 #include "Modules/Input.h"
 #include "Base_Classes/Scene.h"
+#include "Trapped.h"
 
 enum state {
 	STARTING,
@@ -24,6 +25,9 @@ public:
 	void Start();
 
 	void Update();
+
+	Trapped trapped;
+	
 };
 extern ConsoleApplication* App;
 

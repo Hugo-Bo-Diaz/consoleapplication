@@ -28,6 +28,8 @@ void Input::UpdateKeyboard()
 
 		if (c == 13)
 		{
+			App->trapped.RecieveString(typing.c_str());
+			typing.clear();
 			istyping = !istyping;
 		}
 		else
