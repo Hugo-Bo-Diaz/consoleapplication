@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "Object.h"
-#include "Scene.h"
+#include "Base_Classes/Object.h"
+#include "Base_Classes/Scene.h"
 #include "ConsoleApplication.h"
-#include "Input.h"
+#include "Modules/Input.h"
 
 
 void Object::Draw()

@@ -1,8 +1,8 @@
 #ifndef _CONSOLE_APPLICATION_
 #define _CONSOLE_APPLICATION_
 
-#include "Input.h"
-#include "Scene.h"
+#include "Modules/Input.h"
+#include "Base_Classes/Scene.h"
 
 enum state {
 	STARTING,

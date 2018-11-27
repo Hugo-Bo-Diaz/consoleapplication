@@ -3,7 +3,7 @@
 
 #define SCENE_WIDTH 100
 #define SCENE_HEIGHT 20
-#include "Input.h"
+#include "../Modules/Input.h"
 #include <vector>
 #include "Object.h"
 
