@@ -2,6 +2,7 @@
 #include "Input.h"
 #include <conio.h>
 #include <Windows.h>
+#include <algorithm>
 
 Input::Input()
 {
@@ -14,11 +15,32 @@ void Input::UpdateKeyboard()
 	{
 		keyboard[i] = 0;
 	}
-	if (!istyping &&_kbhit())
+	if (_kbhit())
 	{
-		keyboard[_getch()] = 1;
+		char c = _getch();
+
+		if (c == 13)
+		{
+			istyping = !istyping;
+		}
+		else
+		{
+			if (!istyping)
+			{
+				keyboard[c] = 1;
+			}
+			else
+			{
+				typing += c;
+				typing.erase(std::remove(typing.begin(), typing.end(), '\0'), typing.end());
+			}
+		}
 	}
 
+	if (typing.length() > 0)
+	{
+		printf_s("%s", typing.c_str());
+	}		
 	
 }
 

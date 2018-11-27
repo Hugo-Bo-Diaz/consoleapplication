@@ -28,7 +28,7 @@ class Input
 private:
 
 	int keyboard[255];
-	std::string typing;
+	std::string typing="a";
 
 public:
 
