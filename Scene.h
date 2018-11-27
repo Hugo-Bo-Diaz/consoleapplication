@@ -30,8 +30,8 @@ struct Cursor
 
 struct pixel
 {
-	unsigned char character = 'e';
-	color col = WHITE;
+	unsigned char character = '.';
+	color col = WHITEISH;
 	void Set(unsigned char _character, color _col)
 	{
 		character = _character;

@@ -28,9 +28,10 @@ class Input
 private:
 
 	int keyboard[255];
-	std::string typing="a";
 
 public:
+
+	std::string typing;
 
 	HANDLE hConsole;
 

@@ -8,7 +8,6 @@
 #include "Input.h"
 
 
-
 Scene::Scene()
 {
 	for (int i = 0; i < SCENE_WIDTH; ++i)
@@ -16,9 +15,9 @@ Scene::Scene()
 		for (int j = 0; j < SCENE_HEIGHT; ++j)
 		{
 
-			scene_blackboard[i][j].character = 'e';
-			scene_blackboard_new[i][j].character = 'e';
-			scene_background[i][j].character = 'e';
+			scene_blackboard[i][j].character = '.';
+			scene_blackboard_new[i][j].character = '.';
+			scene_background[i][j].character = '.';
 
 		}
 	}
@@ -41,8 +40,9 @@ void Scene::GenerateBackground()
 		for (int j = 0; j < SCENE_WIDTH; ++j)
 		{
 
-			BackgroundCursor.SetPosition(j, i);
-			std::cout << (unsigned char)scene_background[j][i].character;
+			//BackgroundCursor.SetPosition(j, i);
+			PrintPixel(j,i,scene_background[j][i]);
+			//std::cout << (unsigned char)scene_background[j][i].character;
 
 		}
 	}
@@ -66,10 +66,7 @@ void Scene::Update()
 		App->scene.scene_blackboard_new[9][10].character = 219;
 	}
 
-	if (App->input.GetKeyState(27) == 1)
-	{
-		App->appstate = INVALID;
-	}
+
 
 	for (std::vector<Object*>::iterator it = objects.begin(); it != objects.end(); ++it)
 	{
@@ -123,7 +120,7 @@ void Cursor::SetPosition(int x, int y) {
 void Cursor::ResetPosition()
 {
 	COORD normal;
-	normal.X = 0;
-	normal.Y = SCENE_HEIGHT;
+	normal.X = App->input.typing.length();
+	normal.Y = SCENE_HEIGHT+1;
 	SetConsoleCursorPosition(App->input.hConsole, normal);
 }

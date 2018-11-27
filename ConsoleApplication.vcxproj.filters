@@ -33,6 +33,9 @@
     <ClInclude Include="Object.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
+    <ClInclude Include="Controller_Object.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include <algorithm>
+#include "ConsoleApplication.h"
 
 Input::Input()
 {
@@ -15,9 +16,15 @@ void Input::UpdateKeyboard()
 	{
 		keyboard[i] = 0;
 	}
+
 	if (_kbhit())
 	{
 		char c = _getch();
+
+		if (c == 27)
+		{
+			App->appstate = INVALID;
+		}
 
 		if (c == 13)
 		{
@@ -39,8 +46,11 @@ void Input::UpdateKeyboard()
 
 	if (typing.length() > 0)
 	{
+		SetColor(WHITEISH);
+		App->scene.BackgroundCursor.SetPosition(0, SCENE_HEIGHT + 1);
 		printf_s("%s", typing.c_str());
-	}		
+		App->scene.BackgroundCursor.ResetPosition();
+	}
 	
 }
 
