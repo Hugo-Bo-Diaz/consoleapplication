@@ -1,2 +1,13 @@
 room
 dialog
+wish
+help
+place
+death
+friend
+enemy
+floor
+cieling
+door
+corridor
+memory	
