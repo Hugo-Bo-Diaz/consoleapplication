@@ -58,7 +58,7 @@ void Input::UpdateKeyboard()
 			printf_s(" ");
 		}
 		SetColor(WHITEISH);
-		App->scene.BackgroundCursor.SetPosition(0, SCENE_HEIGHT + 1);
+		App->scene.BackgroundCursor.SetPosition(0, SCENE_HEIGHT + 2);
 		printf_s("%s", typing.c_str());
 		App->scene.BackgroundCursor.ResetPosition();
 	}

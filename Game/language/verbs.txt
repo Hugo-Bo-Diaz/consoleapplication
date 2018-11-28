@@ -1,0 +1,9 @@
+escape
+jump
+think
+run
+walk
+talk
+help
+die
+break

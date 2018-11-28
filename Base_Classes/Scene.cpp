@@ -121,6 +121,6 @@ void Cursor::ResetPosition()
 {
 	COORD normal;
 	normal.X = App->input.typing.length();
-	normal.Y = SCENE_HEIGHT+1;
+	normal.Y = SCENE_HEIGHT+2;
 	SetConsoleCursorPosition(App->input.hConsole, normal);
 }
