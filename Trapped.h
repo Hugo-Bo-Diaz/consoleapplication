@@ -8,15 +8,30 @@
 #define BASE_HAPPINESS 50;
 #define BASE_FRIENDSHIP 50
 
+enum word_class
+{
+	NOUN,
+	VERB,
+	ADJECTIVE,
+	GOODWORD,
+	PREPOSITION,
+	BADWORD,
+	VALID
+};
+
 struct wordtype
 {
-	bool noun=false;
-	bool verb = false;
-	bool adjective = false;
-	bool goodword =false;
-	bool preposition = false;
-	bool badword = false;
-	bool valid = false;
+	std::list<word_class> classesitis;
+
+	bool isclass(word_class c)
+	{
+		for (std::list<word_class>::iterator it = classesitis.begin(); it != classesitis.end(); ++it)
+		{
+			if ((*it) == c)
+				return true;
+		}
+		return false;
+	}
 
 	std::string word;
 };
@@ -58,6 +73,8 @@ public:
 	void RecieveString(const char* got);
 	void Analyze_segment(const char* str);
 	void Analyze_syntaxis(std::list<wordtype*>& words);
+
+	std::list<std::list<word_class>*> possible_syntax;
 
 	short int happiness = BASE_HAPPINESS;
 	short int friendship = BASE_FRIENDSHIP;

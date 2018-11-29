@@ -10,4 +10,4 @@ floor
 cieling
 door
 corridor
-memory	
+memory

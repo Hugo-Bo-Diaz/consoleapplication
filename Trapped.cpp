@@ -53,6 +53,50 @@ Trapped::Trapped()
 		std::getline(t, line);
 		prepositions.push_front(line);
 	}
+	t.close();
+
+	t.open("language/possible_syntax.txt");
+
+	std::list<word_class>* c = new std::list<word_class>();
+
+	while (t) {
+		std::string line;
+		std::getline(t, line);
+
+		if (line != "")
+		{
+			if (line == "noun")
+			{
+				c->push_back(NOUN);
+			}
+			else if (line == "verb")
+			{
+				c->push_back(VERB);
+			}
+			else if (line == "adjective")
+			{
+				c->push_back(ADJECTIVE);
+			}
+			else if (line == "goodword")
+			{
+				c->push_back(GOODWORD);
+			}
+			else if (line == "preposition")
+			{
+				c->push_back(PREPOSITION);
+			}
+			else if (line == "badword")
+			{
+				c->push_back(BADWORD);
+			}
+		}
+		else
+		{
+			possible_syntax.push_back(c);
+			c = new std::list<word_class>();
+		}
+	}
+	t.close();
 
 }
 
@@ -116,7 +160,32 @@ void Trapped::Analyze_syntaxis(std::list<wordtype*>& words)
 	
 	//if its a salutation it'll be discarded therefore hi, hey, hello and what's up... are done
 	//if its anything else we check for patterns to see if the sentence makes sense, if it does we guess the meaning and keep moving
+	
+	// this iterates all the supported syntaxes
+	for (std::list<std::list<word_class>*>::iterator it_h = possible_syntax.begin(); it_h != possible_syntax.end(); ++it_h)
+	{
+		//this iterates each syntaxes words
+		int max_score = words.size();
+		int score = 0;
 
+		std::list<wordtype*>::iterator it = words.begin();
+		
+		for (std::list<word_class>::iterator it_l = (*it_h)->begin(); it_l != (*it_h)->end() && it != words.end(); ++it_l, ++it)
+		{
+			if ((*it)->isclass(*it_l))//are they supported??
+			{
+				//if he falls here all the time we win
+				score++;
+			} 
+			
+		}
+		if (score == max_score)
+		{
+			//SUPPORTED SYNTAX
+			printf_s("IT_WORKS");
+			break;
+		}
+	}
 
 }
 
@@ -124,27 +193,27 @@ void Trapped::Getwordtype(const char * word, wordtype* tofill)
 {
 	if (isverb(word))
 	{
-		tofill->verb = true;
+		tofill->classesitis.push_back(VERB);
 	}
 	if (isnoun(word))
 	{
-		tofill->noun = true;
+		tofill->classesitis.push_back(NOUN);
 	}
 	if (isgoodword(word))
 	{
-		tofill->goodword = true;
+		tofill->classesitis.push_back(GOODWORD);
 	}
 	if (isbadword(word))
 	{
-		tofill->badword = true;
+		tofill->classesitis.push_back(BADWORD);
 	}
 	if (ispreposition(word))
 	{
-		tofill->preposition = true;
+		tofill->classesitis.push_back(PREPOSITION);
 	}
 	if (isadjective(word))
 	{
-		tofill->adjective = true;
+		tofill->classesitis.push_back(ADJECTIVE);
 	}
 	
 }
