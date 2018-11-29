@@ -11,3 +11,9 @@ cieling
 door
 corridor
 memory
+me
+you
+him
+her
+we
+they
