@@ -8,14 +8,17 @@
 #define BASE_HAPPINESS 50;
 #define BASE_FRIENDSHIP 50
 
-enum wordtype
+struct wordtype
 {
-	NOUN,
-	VERB,
-	ADJECTIVE,
-	ADVERB,
-	PROPOSITION,
-	NOT_VALID_WORD_TYPE
+	bool noun=false;
+	bool verb = false;
+	bool adjective = false;
+	bool goodword =false;
+	bool preposition = false;
+	bool badword = false;
+	bool valid = false;
+
+	std::string word;
 };
 
 enum phrasetype
@@ -33,7 +36,7 @@ struct interaction
 	int frames_between_last_interaction;
 };
 
-struct theme
+struct topic
 {
 	std::string name;
 	
@@ -45,6 +48,8 @@ public:
 
 	Trapped();
 	
+	bool needssalute = true;
+
 	void Draw();
 
 	void PreUpdate();
@@ -52,21 +57,29 @@ public:
 
 	void RecieveString(const char* got);
 	void Analyze_segment(const char* str);
+	void Analyze_syntaxis(std::list<wordtype*>& words);
 
 	short int happiness = BASE_HAPPINESS;
 	short int friendship = BASE_FRIENDSHIP;
 
-	std::list<theme*> themes_talked_about;
+	std::list<topic*> topics_talked_about;
 
 	std::list<interaction*> past_interactions;
 
-	std::list<std::string> verbs;
-	std::list<std::string> nouns;
-	std::list<std::string> goodwords;
-	std::list<std::string> badwords;
-	std::list<std::string> adjectives;
-	std::list<std::string> prepositions;
+	void Getwordtype(const char*, wordtype* tofill);
 
+	std::list<std::string> verbs;
+	bool isverb(const char* word);
+	std::list<std::string> nouns;
+	bool isnoun(const char* word);
+	std::list<std::string> goodwords;
+	bool isgoodword(const char* word);
+	std::list<std::string> badwords;
+	bool isbadword(const char* word);
+	std::list<std::string> adjectives;
+	bool isadjective(const char* word);
+	std::list<std::string> prepositions;
+	bool ispreposition(const char* word);
 
 };
 
